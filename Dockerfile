@@ -1,5 +1,7 @@
 FROM ipoddaribm/powerai-examples
 
+ADD ./NAE/help.html /etc/NAE/help.html
+
 ADD ./install.tar /usr/local
 COPY ./.bashrc /etc/skel/.bashrc
 
