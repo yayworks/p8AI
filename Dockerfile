@@ -1,5 +1,7 @@
 FROM ipoddaribm/powerai-examples
 
+ADD ./install.tar /usr/local
+COPY ./.bashrc /etc/skel/.bashrc
 
 #add NIMBIX application
 COPY AppDef.json /etc/NAE/AppDef.json
