@@ -8,4 +8,5 @@ COPY ./.bashrc /etc/skel/.bashrc
 
 #add NIMBIX application
 COPY AppDef.json /etc/NAE/AppDef.json
+COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
