@@ -10,3 +10,6 @@ COPY ./.bashrc /etc/skel/.bashrc
 COPY AppDef.json /etc/NAE/AppDef.json
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
+RUN apt-get update && apt-get install -y python3-pip npm nodejs-legacy
+
+
