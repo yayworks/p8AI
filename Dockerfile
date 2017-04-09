@@ -10,9 +10,6 @@ COPY ./.bashrc /etc/skel/.bashrc
 COPY AppDef.json /etc/NAE/AppDef.json
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
-WORKDIR /home/nimbix
-USER nimbix
-#
-RUN /usr/local/install_test.sh
+
 
 
