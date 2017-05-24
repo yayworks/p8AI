@@ -29,10 +29,10 @@ RUN sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/s
 
 RUN sudo service ssh restart
 
-RUN cd /home/nimbix
+WORKDIR /home/nimbix
 RUN mkdir wetty
 
-RUN cd wetty
+WORKDIR /home/nimbix/wetty
 
 ##Programmatically create self-signed certificates
 RUN /usr/bin/yb-gencert yay
