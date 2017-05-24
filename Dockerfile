@@ -30,8 +30,8 @@ RUN sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/s
 
 RUN sudo service ssh restart
 
-WORKDIR /home/nimbix
-RUN mkdir wetty
+#WORKDIR /home/nimbix
+#RUN mkdir wetty
 
 WORKDIR /home/nimbix/wetty
 
