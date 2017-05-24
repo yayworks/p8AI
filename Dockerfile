@@ -12,4 +12,11 @@ COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
 
 
+/usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar
+##Untar user management executables into /usr/bin directory
+tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin
+RUN apt-get install -y tcl
+RUN apt-get install -y git
+
+
 
