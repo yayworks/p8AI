@@ -60,7 +60,18 @@
             "name": "Launch",
             "description": "Launch and ephemeral environment and connect via SSH. Save any persistent data, code, or prototypes in /data to be able to access again in the future.",
             "parameters": {}
+        },       
+        "Server": {
+            "path": "/sbin/init",
+            "interactive": true,
+            "name": "Server",
+            "description": "Launch a session with all boot services, including SSH.  Connection address and credentials will appear in your web browser once available.",
+            "scale_max": 1,
+            "walltime": "0:20:00",
+            "parameters": {}
         }
+    }
+ 
     },
     "image": {
         "type": "image/jpeg",
