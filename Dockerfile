@@ -13,7 +13,8 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
 
-
+WORKDIR /home/nimbix
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin
 RUN /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar
 ##Untar user management executables into /usr/bin directory
 RUN tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin
@@ -82,7 +83,7 @@ RUN a2enmod rewrite headers env dir mime setenvif ssl
 #sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.starttensorboard.sh 8888 &"
 #sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.startdigits.sh 8889 &"
 #sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.startjupyter.sh 8890 &"
-#WORKDIR /
+WORKDIR /
 RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz
 RUN sudo tar xfpvz ybcloud_v0.92.tar.gz
 
