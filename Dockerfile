@@ -36,6 +36,23 @@ WORKDIR /home/nimbix/wetty
 
 ##Programmatically create self-signed certificates
 RUN /usr/bin/yb-gencert yay
+##Install IBM XL Community Edition C/C++ & Fortran compilers
+
+RUN wget -q http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/public.gpg -O- | sudo apt-key add -
+RUN echo "deb http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/ trusty main" | sudo tee /etc/apt/sources.list.d/ibm-xl-compiler-eval.list
+RUN sudo apt-get update
+#
+RUN sudo apt-get install -y xlc.13.1.5
+#
+RUN sudo /opt/ibm/xlC/13.1.5/bin/xlc_configure <<EOF
+1
+EOF
+
+RUN sudo apt-get install -y xlf.15.1.5
+
+RUN sudo /opt/ibm/xlf/15.1.5/bin/xlf_configure <<EOF
+1
+EOF
 
 
 
