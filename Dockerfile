@@ -61,7 +61,7 @@ RUN apt-get install -y php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbs
 
 RUN apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
 
-#RUN a2enmod rewrite headers env dir mime setenvif ssl
+RUN a2enmod rewrite headers env dir mime setenvif ssl
 
 #echo "Creating a userid for cur_user and initializing the lab environment"
 
@@ -83,8 +83,8 @@ RUN apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-z
 #sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.startdigits.sh 8889 &"
 #sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.startjupyter.sh 8890 &"
 #WORKDIR /
-#RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz
-#RUN sudo tar xfpvz ybcloud_v0.92.tar.gz
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz
+RUN sudo tar xfpvz ybcloud_v0.92.tar.gz
 
 #RUN sudo /usr/bin/yb-jpytokens
 #sudo /usr/bin/yb-replinfile $yc_config_file $pubDNS $repl_tag 
