@@ -18,6 +18,9 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
+RUN rm /root/startdigits.sh
+RUN rm /root/starttensorboard.sh
+RUN rm /root/startjupyter.sh
 
 WORKDIR /home/nimbix
 RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin
