@@ -2,12 +2,6 @@ FROM ipoddaribm/powerai-examples
 
 ADD ./NAE/help.html /etc/NAE/help.html
 
-WORKDIR /root
-ADD startjupyter.sh /root/.startjupyter.sh 
-ADD startdigits.sh  /root/.startdigits.sh
-ADD starttensorboard.sh /root/.starttensorboard.sh 
-ADD conf.d/* /etc/supervisor/conf.d/
-
 ADD ./install.tar /usr/local
 
 COPY ./.bashrc /etc/skel/.bashrc
