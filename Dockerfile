@@ -6,6 +6,10 @@ WORKDIR /root
 ADD startjupyter.sh /root/.startjupyter.sh 
 ADD startdigits.sh  /root/.startdigits.sh
 ADD starttensorboard.sh /root/.starttensorboard.sh 
+RUN chmod +x /root/.startjupyter.sh
+RUN chmod +x /root/.startdigits.sh
+RUN chmod +x /root/.starttensorboard.sh
+
 ADD conf.d/* /etc/supervisor/conf.d/
 
 ADD ./install.tar /usr/local
