@@ -1,14 +1,19 @@
 FROM ipoddaribm/powerai-examples
 
 ADD ./NAE/help.html /etc/NAE/help.html
+WORKDIR /opt/DL
+RUN wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz; tar xvf Tensorflow-Tutorials.tar.gz; rm Tensorflow-Tutorials.tar.gz
+
 
 WORKDIR /root
 ADD startjupyter.sh /root/.startjupyter.sh 
 ADD startdigits.sh  /root/.startdigits.sh
 ADD starttensorboard.sh /root/.starttensorboard.sh 
+ADD starttftuts.sh /root/.starttftuts.sh
 RUN chmod +x /root/.startjupyter.sh
 RUN chmod +x /root/.startdigits.sh
 RUN chmod +x /root/.starttensorboard.sh
+RUN chmod +x /root/.starttftuts.sh
 
 ADD conf.d/* /etc/supervisor/conf.d/
 
