@@ -25,6 +25,8 @@ COPY ./.bashrc /etc/skel/.bashrc
 COPY AppDef.json /etc/NAE/AppDef.json
 RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate
 
+RUN pip install -U scikit-learn
+
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
 RUN rm /root/startdigits.sh
