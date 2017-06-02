@@ -10,10 +10,10 @@ ADD startjupyter.sh /root/.startjupyter.sh
 ADD startdigits.sh  /root/.startdigits.sh
 ADD starttensorboard.sh /root/.starttensorboard.sh 
 ADD starttftuts.sh /root/.starttftuts.sh
-RUN chmod +x /root/.startjupyter.sh
-RUN chmod +x /root/.startdigits.sh
-RUN chmod +x /root/.starttensorboard.sh
-RUN chmod +x /root/.starttftuts.sh
+RUN chmod +x /root/.startjupyter.sh \
+&& chmod +x /root/.startdigits.sh \
+&& chmod +x /root/.starttensorboard.sh \
+&& chmod +x /root/.starttftuts.sh
 
 ADD conf.d/* /etc/supervisor/conf.d/
 
@@ -25,94 +25,59 @@ COPY ./.bashrc /etc/skel/.bashrc
 COPY AppDef.json /etc/NAE/AppDef.json
 RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate
 
-RUN pip install -U scikit-learn
-RUN pip install -U prettytensor
+RUN pip install -U scikit-learn \
+&& pip install -U prettytensor
 
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
-RUN rm /root/startdigits.sh
-RUN rm /root/starttensorboard.sh
-RUN rm /root/startjupyter.sh
+RUN rm /root/startdigits.sh \
+&& rm /root/starttensorboard.sh \
+&& rm /root/startjupyter.sh
 
 WORKDIR /home/nimbix
-RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin
-RUN /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar
-##Untar user management executables into /usr/bin directory
-RUN tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin
-RUN apt-get install -y tcl
-RUN apt-get install -y git
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
+&& /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
 
-RUN echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> .bashrc
-RUN echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> /etc/bash.bashrc
-RUN export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH
+&& tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin \
+&& sudo apt-get install -y tcl \
+&& sudo apt-get install -y git \
 
-##Set up login-based access to the system
-RUN sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> .bashrc \
+&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> /etc/bash.bashrc \
+&& export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH \
 
-RUN sudo service ssh restart
+&& sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config \
 
-#WORKDIR /home/nimbix
-#RUN mkdir wetty
+&& sudo service ssh restart \
 
-WORKDIR /home/nimbix/wetty
+&& mkdir wetty \
 
-##Programmatically create self-signed certificates
-RUN /usr/bin/yb-gencert yay
-##Install IBM XL Community Edition C/C++ & Fortran compilers
+&& cd /home/nimbix/wetty \
 
-RUN wget -q http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/public.gpg -O- | sudo apt-key add -
-RUN echo "deb http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/ trusty main" | sudo tee /etc/apt/sources.list.d/ibm-xl-compiler-eval.list
-RUN sudo apt-get update
-#
-RUN sudo apt-get install -y xlc.13.1.5
-#
-#RUN sudo /opt/ibm/xlC/13.1.5/bin/xlc_configure <<EOF
-#1
-#EOF
+&& /usr/bin/yb-gencert yay \
+&& cd /home/nimbix \
 
-RUN sudo apt-get install -y xlf.15.1.5
+&& wget -q http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/public.gpg -O- | sudo apt-key add - \
+&& echo "deb http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/ trusty main" | sudo tee /etc/apt/sources.list.d/ibm-xl-compiler-eval.list \
+&& sudo apt-get update \
+&& sudo apt-get install -y xlc.13.1.5 \
+&& sudo apt-get install -y xlf.15.1.5 \
 
-#RUN sudo /opt/ibm/xlf/15.1.5/bin/xlf_configure <<EOF
-#1
-#EOF
 
-RUN apt-get update
-RUN apt-get install -y apache2 mariadb-server libapache2-mod-php7.0
+&& sudo apt-get update \
+&& sudo apt-get install -y apache2 mariadb-server libapache2-mod-php7.0 \
+&& sudo apt-get install -y php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring \
+&& sudo apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip \
+&& sudo a2enmod rewrite headers env dir mime setenvif ssl
 
-RUN apt-get install -y php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
 
-RUN apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
-
-RUN a2enmod rewrite headers env dir mime setenvif ssl
-
-#echo "Creating a userid for cur_user and initializing the lab environment"
-
-#sudo /usr/bin/yb-adduser $base_dir $cur_user $session_dur
-#sudo /usr/bin/yb-initenv $base_dir $cur_user $lab_type
-#sudo /usr/bin/yb-initlab $cur_user 
-
-#echo "Start TensorBoard and Jupyter Notebook "
-
-#sudo /usr/bin/yb-procdel python
-
-#cur_user_home=/${base_dir}/${cur_user}
-#sudo cp /root/starttensorboard.sh ${cur_user_home}/.starttensorboard.sh
-#sudo cp /root/startdigits.sh ${cur_user_home}/.startdigits.sh
-#sudo cp /root/startjupyter.sh ${cur_user_home}/.startjupyter.sh
-#sudo chown -R ${cur_user}.${cur_user} $cur_user_home
-##cmd="${cur_user_home}/starttensorboard.sh &"
-#sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.starttensorboard.sh 8888 &"
-#sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.startdigits.sh 8889 &"
-#sudo -S -u $cur_user -i /bin/bash -l -c "${cur_user_home}/.startjupyter.sh 8890 &"
 WORKDIR /
-RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz
-RUN sudo tar xfpvz ybcloud_v0.92.tar.gz
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz \
+&& sudo tar xfpvz ybcloud_v0.92.tar.gz 
 
-#RUN sudo /usr/bin/yb-jpytokens
-#sudo /usr/bin/yb-replinfile $yc_config_file $pubDNS $repl_tag 
-#sudo /usr/bin/yb-replinfile $yc_apache2_conf_file $pubDNS $repl_tag 
-#RUN sudo systemctl restart mysql
-#RUN sudo systemctl restart apache2
+
+
+
 
 
 
