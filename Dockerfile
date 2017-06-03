@@ -10,10 +10,13 @@ ADD startjupyter.sh /root/.startjupyter.sh
 ADD startdigits.sh  /root/.startdigits.sh
 ADD starttensorboard.sh /root/.starttensorboard.sh 
 ADD starttftuts.sh /root/.starttftuts.sh
+ADD yb-sw-config.NIMBIX.ppc64le.p8AI.sh /root/sw-config.sh
+
 RUN chmod +x /root/.startjupyter.sh \
 && chmod +x /root/.startdigits.sh \
 && chmod +x /root/.starttensorboard.sh \
-&& chmod +x /root/.starttftuts.sh
+&& chmod +x /root/.starttftuts.sh \
+&& chmod +x /root/sw-config.sh
 
 ADD conf.d/* /etc/supervisor/conf.d/
 
@@ -68,7 +71,9 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-li
 && sudo apt-get install -y apache2 mariadb-server libapache2-mod-php7.0 \
 && sudo apt-get install -y php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring \
 && sudo apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip \
-&& sudo a2enmod rewrite headers env dir mime setenvif ssl
+&& sudo a2enmod rewrite headers env dir mime setenvif ssl \
+
+&& /root/sw-config.sh
 
 
 WORKDIR /
