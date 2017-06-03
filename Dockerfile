@@ -71,14 +71,16 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-li
 && sudo apt-get install -y apache2 mariadb-server libapache2-mod-php7.0 \
 && sudo apt-get install -y php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring \
 && sudo apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip \
-&& sudo a2enmod rewrite headers env dir mime setenvif ssl \
+&& sudo a2enmod rewrite headers env dir mime setenvif ssl 
 
-&& /root/sw-config.sh
+
 
 
 WORKDIR /
 RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz \
-&& sudo tar xfpvz ybcloud_v0.92.tar.gz 
+&& sudo tar xfpvz ybcloud_v0.92.tar.gz \
+
+&& /root/sw-config.sh
 
 
 
