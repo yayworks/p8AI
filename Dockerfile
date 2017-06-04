@@ -83,7 +83,8 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz \
 && sudo tar xfpvz ybcloud_v0.92.tar.gz \
 
 && /root/sw-config.sh \
-&& rm /root/sw-config.sh
+&& rm /root/sw-config.sh \
+&& echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc
 
 
 
