@@ -7,12 +7,14 @@ RUN wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz; tar xv
 
 WORKDIR /root
 ADD startjupyter.sh /root/.startjupyter.sh 
+ADD startjupyter_py3.sh /root/.startjupyter_py3.sh
 ADD startdigits.sh  /root/.startdigits.sh
 ADD starttensorboard.sh /root/.starttensorboard.sh 
 ADD starttftuts.sh /root/.starttftuts.sh
 ADD yb-sw-config.NIMBIX.ppc64le.p8AI.sh /root/sw-config.sh
 
 RUN chmod +x /root/.startjupyter.sh \
+&& chmod +x /root/.startjupyter_py3.sh \
 && chmod +x /root/.startdigits.sh \
 && chmod +x /root/.starttensorboard.sh \
 && chmod +x /root/.starttftuts.sh \
@@ -80,7 +82,8 @@ WORKDIR /
 RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz \
 && sudo tar xfpvz ybcloud_v0.92.tar.gz \
 
-&& /root/sw-config.sh
+&& /root/sw-config.sh \
+&& rm /root/sw-config.sh
 
 
 
