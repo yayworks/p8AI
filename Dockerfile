@@ -90,7 +90,7 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz \
 
 
 && cd /root \
-&& source .bashrc \
+&& source /root/.bashrc \
 && wget https://github.com/google/prettytensor/archive/master.zip \
 && unzip master.zip \
 && rm master.zip \
