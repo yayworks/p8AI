@@ -90,15 +90,14 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.92.tar.gz \
 
 
 && cd /root \
-&& source /root/.bashrc \
 && wget https://github.com/google/prettytensor/archive/master.zip \
 && unzip master.zip \
 && rm master.zip \
 && cd prettytensor-master \
-&& python setup.py install \
+&& /root/anaconda3/bin/python setup.py install \
 
-&& pip install gym \
-&& pip install atari_py
+&& /root/anaconda3/bin/pip install gym \
+&& /root/anaconda3/bin/pip install atari_py
 
 
 
