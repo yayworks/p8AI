@@ -1,8 +1,8 @@
 FROM ipoddaribm/powerai-examples
 
 ADD ./NAE/help.html /etc/NAE/help.html
-WORKDIR /opt/DL
-RUN wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz; tar xvf Tensorflow-Tutorials.tar.gz; rm Tensorflow-Tutorials.tar.gz
+#WORKDIR /opt/DL
+#RUN wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz; tar xvf Tensorflow-Tutorials.tar.gz; rm Tensorflow-Tutorials.tar.gz
 
 
 WORKDIR /root
