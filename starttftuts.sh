@@ -6,6 +6,6 @@
 
 export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/
 source /root/anaconda3/bin/activate tensorflow
-cd /opt/DL/Tensorflow-Tutorials
+cd /var/www/data/admin/files/Tensorflow-Tutorials
 
 /root/anaconda3/bin/jupyter  notebook --ip=0.0.0.0 --port=$1 --allow-root  &
