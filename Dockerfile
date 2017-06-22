@@ -80,7 +80,7 @@ RUN /root/sw-config.sh \
 && rm /root/sw-config.sh \
 && source /root/anaconda3/bin/activate tensorflow \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
-&& echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc \
+&& echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc 
 
 RUN wget https://github.com/google/prettytensor/archive/master.zip \
 && unzip master.zip \
