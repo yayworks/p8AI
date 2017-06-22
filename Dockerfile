@@ -33,12 +33,12 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && /root/sw-config.sh \
 && rm /root/sw-config.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
-&& echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc 
+&& echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc \
 
-#&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
-#&& unzip master.zip \
-#&& rm master.zip \
-#&& cd prettytensor-master 
+&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
+&& unzip master.zip \
+&& rm master.zip \
+&& cd prettytensor-master 
 
 
 
