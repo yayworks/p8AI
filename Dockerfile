@@ -5,7 +5,7 @@ ADD ./NAE/help.html /etc/NAE/help.html
 #RUN wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz; tar xvf Tensorflow-Tutorials.tar.gz; rm Tensorflow-Tutorials.tar.gz
 
 
-WORKDIR /root
+#WORKDIR /root
 #USER root
 ADD startjupyter.sh /root/.startjupyter.sh 
 ADD startjupyter_py3.sh /root/.startjupyter_py3.sh
