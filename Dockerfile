@@ -20,9 +20,7 @@ RUN chmod +x /root/.startjupyter.sh \
 && chmod +x /root/.starttftuts.sh \
 && chmod +x /root/sw-config.sh
 
-ADD conf.d/* /etc/supervisor/conf.d/
-
-ADD ./install.tar /usr/local
+ADD conf.d/* /etc/supervisor/conf.d/*
 
 COPY ./.bashrc /etc/skel/.bashrc
 
