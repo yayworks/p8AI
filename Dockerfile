@@ -26,10 +26,10 @@ RUN chmod +x /root/.startjupyter.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
 && echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc 
 
-#&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
-#&& unzip master.zip \
-#&& rm master.zip \
-#&& cd prettytensor-master 
+&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
+&& unzip master.zip \
+&& rm master.zip \
+&& cd prettytensor-master 
 
 ADD conf.d/* /etc/supervisor/conf.d/
 
@@ -40,33 +40,6 @@ COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 COPY AppDef.json /etc/NAE/AppDef.json
 RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate
 
-#RUN rm /root/startdigits.sh \
-#&& rm /root/starttensorboard.sh \
-#&& rm /root/startjupyter.sh
-
-#USER nimbix
-WORKDIR /home/nimbix
-RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
-&& /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
-
-&& tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin \
-&& sudo apt-get install -y tcl \
-&& sudo apt-get install -y git \
-
-&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> .bashrc \
-&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> /etc/bash.bashrc \
-&& export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH \
-
-&& sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config \
-&& sudo service ssh restart 
-
-#&& /root/anaconda3/envs/tensorflow/bin/python setup.py install \
-
-#&& /root/anaconda3/envs/tensorflow/bin/pip install gym \
-#&& /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
-#&& /root/.starttftuts.sh 9002 & \
-
-#&& /usr/bin/yb-jpytokens
 
 
 
