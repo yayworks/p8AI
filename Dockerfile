@@ -35,46 +35,6 @@ RUN rm /root/startdigits.sh \
 && rm /root/starttensorboard.sh \
 && rm /root/startjupyter.sh
 
-WORKDIR /home/nimbix
-RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
-&& /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
-
-&& tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin \
-&& sudo apt-get install -y tcl \
-&& sudo apt-get install -y git \
-
-&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> .bashrc \
-&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> /etc/bash.bashrc \
-&& export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH \
-
-&& sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config \
-
-&& sudo service ssh restart \
-
-&& mkdir wetty \
-
-&& cd /home/nimbix/wetty \
-
-&& /usr/bin/yb-gencert yay \
-&& cd /home/nimbix \
-
-&& wget -q http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/public.gpg -O- | sudo apt-key add - \
-&& echo "deb http://public.dhe.ibm.com/software/server/POWER/Linux/xl-compiler/eval/ppc64le/ubuntu/ trusty main" | sudo tee /etc/apt/sources.list.d/ibm-xl-compiler-eval.list \
-&& sudo apt-get update \
-&& sudo apt-get install -y xlc.13.1.5 \
-&& sudo apt-get install -y xlf.15.1.5 \
-
-
-&& sudo apt-get update \
-&& sudo apt-get install -y apache2 mariadb-server libapache2-mod-php7.0 \
-&& sudo apt-get install -y php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring \
-&& sudo apt-get install -y php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip \
-&& sudo a2enmod rewrite headers env dir mime setenvif ssl 
-
-
-
-
-
 
 
 
