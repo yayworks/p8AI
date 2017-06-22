@@ -35,6 +35,21 @@ RUN rm /root/startdigits.sh \
 && rm /root/starttensorboard.sh \
 && rm /root/startjupyter.sh
 
+WORKDIR /home/nimbix
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
+&& /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
+
+&& tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin \
+&& sudo apt-get install -y tcl \
+&& sudo apt-get install -y git \
+
+&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> .bashrc \
+&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> /etc/bash.bashrc \
+&& export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH \
+
+&& sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+
+&& sudo service ssh restart 
 
 
 
