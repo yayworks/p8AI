@@ -75,8 +75,8 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-li
 
 
 
-USER root
-#WORKDIR /root
+#USER root
+WORKDIR /root
 #RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.93.tar.gz \
 #&& sudo tar xfpvz ybcloud_v0.93.tar.gz \
 
@@ -85,7 +85,7 @@ RUN /root/sw-config.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
 && echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc \
 
-&& wget https://github.com/google/prettytensor/archive/master.zip \
+RUN wget https://github.com/google/prettytensor/archive/master.zip \
 && unzip master.zip \
 && rm master.zip \
 && cd prettytensor-master \
