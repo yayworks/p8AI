@@ -26,7 +26,7 @@ RUN chmod +x /root/.startjupyter.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
 && echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc \
 
-&& wget https://github.com/google/prettytensor/archive/master.zip -P /root \
+&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
 && unzip master.zip \
 && rm master.zip \
 && cd prettytensor-master 
