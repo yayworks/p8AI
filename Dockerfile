@@ -5,7 +5,7 @@ ADD ./NAE/help.html /etc/NAE/help.html
 #RUN wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz; tar xvf Tensorflow-Tutorials.tar.gz; rm Tensorflow-Tutorials.tar.gz
 
 
-#WORKDIR /root
+WORKDIR /root
 #USER root
 ADD startjupyter.sh /root/.startjupyter.sh 
 ADD startjupyter_py3.sh /root/.startjupyter_py3.sh
@@ -24,12 +24,12 @@ RUN chmod +x /root/.startjupyter.sh \
 && /root/sw-config.sh \
 && rm /root/sw-config.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
-&& echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc \
+&& echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc 
 
-&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
-&& unzip master.zip \
-&& rm master.zip \
-&& cd prettytensor-master 
+#&& /usr/bin/wget https://github.com/google/prettytensor/archive/master.zip -P /root \
+#&& unzip master.zip \
+#&& rm master.zip \
+#&& cd prettytensor-master 
 
 ADD conf.d/* /etc/supervisor/conf.d/
 
