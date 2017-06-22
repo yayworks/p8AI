@@ -52,7 +52,6 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-li
 
 RUN /root/sw-config.sh \
 && rm /root/sw-config.sh \
-&& source /root/anaconda3/bin/activate tensorflow \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
 && echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc
 
