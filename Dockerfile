@@ -44,8 +44,8 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 #&& rm /root/starttensorboard.sh \
 #&& rm /root/startjupyter.sh
 
-USER nimbix
-#WORKDIR /home/nimbix
+#USER nimbix
+WORKDIR /home/nimbix
 RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
 && /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
 
