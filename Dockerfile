@@ -55,6 +55,17 @@ RUN /root/sw-config.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
 && echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc
 
+RUN wget https://github.com/google/prettytensor/archive/master.zip \
+&& unzip master.zip \
+&& rm master.zip \
+&& cd prettytensor-master \
+&& /root/anaconda3/envs/tensorflow/bin/python setup.py install \
+
+&& /root/anaconda3/envs/tensorflow/bin/pip install gym \
+&& /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
+&& /root/.starttftuts.sh 9002 & \
+
+&& /usr/bin/yb-jpytokens
 
 
 
