@@ -6,7 +6,7 @@ ADD ./NAE/help.html /etc/NAE/help.html
 
 
 #WORKDIR /root
-USER root
+#USER root
 ADD startjupyter.sh /root/.startjupyter.sh 
 ADD startjupyter_py3.sh /root/.startjupyter_py3.sh
 ADD startdigits.sh  /root/.startdigits.sh
