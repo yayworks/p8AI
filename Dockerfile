@@ -30,8 +30,6 @@ COPY ./.bashrc /etc/skel/.bashrc
 COPY AppDef.json /etc/NAE/AppDef.json
 RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate
 
-RUN pip install -U scikit-learn \
-&& pip install -U prettytensor
 
 COPY ./jupyterhub_config.py /usr/local/jupyterhub_config.py
 
@@ -77,15 +75,16 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-li
 
 
 
-
-WORKDIR /
-RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.93.tar.gz \
-&& sudo tar xfpvz ybcloud_v0.93.tar.gz \
+USER root
+#WRKDIR /
+#RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.93.tar.gz \
+#&& sudo tar xfpvz ybcloud_v0.93.tar.gz \
 
 && /root/sw-config.sh \
 && rm /root/sw-config.sh \
 && echo 'export PATH=/root/anaconda3/envs/tensorflow/bin:$PATH' >> /root/.bashrc \
 && echo 'export PYTHONPATH=/root/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:$PYTHONPATH' >> /root/.bashrc \
+&& /usr/bin/yb-procdel python \
 
 
 
@@ -97,7 +96,10 @@ RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ybcloud_v0.93.tar.gz \
 && /root/anaconda3/bin/python setup.py install \
 
 && /root/anaconda3/bin/pip install gym \
-&& /root/anaconda3/bin/pip install atari_py
+&& /root/anaconda3/bin/pip install atari_py \
+&& /root/.starttftuts.sh 9002 & \
+
+&& /usr/bin/yb-jpytokens
 
 
 
