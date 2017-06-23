@@ -41,8 +41,9 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && cd prettytensor-master \
 && /root/anaconda3/envs/tensorflow/bin/python setup.py install \
 
-&& cd /root \
-&& /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
+&& cd /opt/DL \
+&& wget sudo wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz \
+&& tar xvf Tensorflow-Tutorials.tar.gz \
 
 && /root/.starttftuts.sh 9002 & 
 
@@ -65,6 +66,7 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 #&& /usr/bin/yb-jpytokens
 
 #&&/root/anaconda3/envs/tensorflow/bin/pip install gym \
+#&& /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
 
 
 
