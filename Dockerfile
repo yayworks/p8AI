@@ -43,17 +43,18 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && /root/anaconda3/envs/tensorflow/bin/pip install gym \
 && /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
 && /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz -P /opt/DL \
-&& tar xvf /opt/DL/Tensorflow-Tutorials.tar.gz -C /opt/DL 
-#&& /root/.starttftuts.sh 9002 & 
+&& tar xvf /opt/DL/Tensorflow-Tutorials.tar.gz -C /opt/DL \
+&& /root/.starttftuts.sh 9002 
 
 
-#WORKDIR /home/nimbix
-#RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
-#&& /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
+WORKDIR /home/nimbix
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ibm-6.9.1.0-node-v6.9.1-linux-ppc64le.bin \
+&& /usr/bin/wget  https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.ppc64le.tar \
 
-#&& tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin \
-#&& sudo apt-get install -y tcl \
-#&& sudo apt-get install -y git \
+&& tar xvf yb-admin.NIMBIX.ppc64le.tar -C /usr/bin \
+&& sudo apt-get install -y tcl \
+&& sudo apt-get install -y git \
+&& /usr/bin/yb-jpytokens
 
 #&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> .bashrc \
 #&& echo 'export PATH=/usr/local/node/bin:/usr/local/cuda/bin:/opt/ibm/xlC/13.1.5/bin:/opt/ibm/xlf/15.1.5/bin:$PATH' >> /etc/bash.bashrc \
@@ -62,12 +63,10 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 #&& sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config \
 #&& sudo service ssh restart 
 
+
 #&& /usr/bin/yb-jpytokens
 
 
-
-#&& /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz -P /opt/DL \
-#&& tar xvf /opt/DL/Tensorflow-Tutorials.tar.gz -C /opt/DL \
 #&& rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 
 
