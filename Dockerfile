@@ -41,7 +41,7 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && cd prettytensor-master \
 && /root/anaconda3/envs/tensorflow/bin/python setup.py install \
 
-cd /root \
+&& cd /root \
 
 && /root/anaconda3/envs/tensorflow/bin/pip install gym \
 && /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
