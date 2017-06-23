@@ -42,7 +42,7 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && /root/anaconda3/envs/tensorflow/bin/python setup.py install \
 
 && cd /opt/DL \
-&& wget sudo wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz \
+&& wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz \
 && tar xvf Tensorflow-Tutorials.tar.gz \
 
 && /root/.starttftuts.sh 9002 & 
