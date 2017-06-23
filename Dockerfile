@@ -39,9 +39,9 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && unzip master.zip \
 && rm master.zip \
 && cd prettytensor-master \
-&& /root/anaconda3/envs/tensorflow/bin/python setup.py install \
+&& /root/anaconda3/envs/tensorflow/bin/python setup.py install 
 
-&& /root/.starttftuts.sh 9002 & 
+#&& /root/.starttftuts.sh 9002 & 
 
 
 #WORKDIR /home/nimbix
