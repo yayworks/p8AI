@@ -41,9 +41,9 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && cd prettytensor-master \
 && /root/anaconda3/envs/tensorflow/bin/python setup.py install \
 
-&& cd /opt/DL \
-&& wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz \
-&& tar xvf Tensorflow-Tutorials.tar.gz \
+&& /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz -P /opt/DL \
+&& tar xvf /opt/DL/Tensorflow-Tutorials.tar.gz -C /opt/DL \
+&& rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 
 && /root/.starttftuts.sh 9002 & 
 
