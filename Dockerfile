@@ -12,6 +12,7 @@ ADD startjupyter_py3.sh /root/.startjupyter_py3.sh
 ADD startdigits.sh  /root/.startdigits.sh
 ADD starttensorboard.sh /root/.starttensorboard.sh 
 ADD starttftuts.sh /root/.starttftuts.sh
+ADD jpy_nb_start.sh /root/.jpy_nb_start.sh
 ADD yb-sw-config.NIMBIX.ppc64le.p8AI.sh /root/sw-config.sh
 
 RUN chmod +x /root/.startjupyter.sh \
@@ -19,6 +20,7 @@ RUN chmod +x /root/.startjupyter.sh \
 && chmod +x /root/.startdigits.sh \
 && chmod +x /root/.starttensorboard.sh \
 && chmod +x /root/.starttftuts.sh \
+&& chmod +x /root/.jpy_nb_start.sh \
 && chmod +x /root/sw-config.sh 
 
 ADD conf.d/* /etc/supervisor/conf.d/
