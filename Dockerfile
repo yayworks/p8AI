@@ -46,9 +46,13 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && /root/anaconda3/envs/tensorflow/bin/pip install atari_py \
 && /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-Tutorials.tar.gz -P /opt/DL \
 && tar xvf /opt/DL/Tensorflow-Tutorials.tar.gz -C /opt/DL \
+&& /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/Tensorflow-101.tar.gz -P /opt/DL \
+&& tar xvf /opt/DL/Tensorflow-101.tar.gz -C /opt/DL \
+&& rm /opt/DL/Tensorflow-Tutorials.tar.gz \
+&& rm /opt/DL/Tensorflow-101.tar.gz \
 && rm /root/Anaconda3-4.4.0-Linux-ppc64le.sh \
-&& rm -rf /root/prettytensor-master \
-&& rm /opt/DL/Tensorflow-Tutorials.tar.gz
+&& rm -rf /root/prettytensor-master 
+
 
 
 
