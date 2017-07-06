@@ -50,10 +50,13 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && tar xvf /opt/DL/Tensorflow-101.tar.gz -C /opt/DL \
 && /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/basics.tar.gz -P /opt/DL \
 && tar xvf /opt/DL/basics.tar.gz -C /opt/DL \
+&& /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ExplorePyComp.tar.gz -P /opt/DL \
+&& tar xvf /opt/DL/ExplorePyComp.tar.gz -C /opt/DL \
 
 && rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 && rm /opt/DL/Tensorflow-101.tar.gz \
 && rm /opt/DL/basics.tar.gz \
+&& rm /opt/DL/ExplorePyComp.tar.gz \
 && rm /root/Anaconda3-4.4.0-Linux-ppc64le.sh \
 && rm -rf /root/prettytensor-master 
 
