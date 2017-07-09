@@ -52,11 +52,18 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && tar xvf /opt/DL/basics.tar.gz -C /opt/DL \
 && /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/ExplorePyComp.tar.gz -P /opt/DL \
 && tar xvf /opt/DL/ExplorePyComp.tar.gz -C /opt/DL \
+&& /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/LearnDataScience.tar.gz -P /opt/DL \
+&& tar xvf /opt/DL/LearnDataScience.tar.gz -C /opt/DL \
+&& /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/DeepLearningKerasTensorflow.tar.gz -P /opt/DL \
+&& tar xvf /opt/DL/DeepLearningKerasTensorflow.tar.gz -C /opt/DL \
+
 
 && rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 && rm /opt/DL/Tensorflow-101.tar.gz \
 && rm /opt/DL/basics.tar.gz \
 && rm /opt/DL/ExplorePyComp.tar.gz \
+&& rm /opt/DL/LearnDataScience.tar.gz \
+&& rm /opt/DL/DeepLearningKerasTensorflow.tar.gz \
 && rm /root/Anaconda3-4.4.0-Linux-ppc64le.sh \
 && rm -rf /root/prettytensor-master 
 
