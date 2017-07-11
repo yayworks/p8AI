@@ -58,7 +58,13 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && tar xvf /opt/DL/DeepLearningKerasTensorflow.tar.gz -C /opt/DL \
 
 
-&& apt-get install gfortran \
+&& apt-get install -y gfortran \
+&& apt-get update \
+
+&& pip install numpy scipy \
+&& pip install scikit-learn \
+&& pip install pillow \
+&& pip install keras \
 
 && rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 && rm /opt/DL/Tensorflow-101.tar.gz \
