@@ -57,8 +57,9 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/DeepLearningKerasTensorflow.tar.gz -P /opt/DL \
 && tar xvf /opt/DL/DeepLearningKerasTensorflow.tar.gz -C /opt/DL \
 
-&& apt-get update \
+
 && apt-get install gfortran \
+&& apt-get update \
 
 
 
