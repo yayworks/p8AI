@@ -65,6 +65,7 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 &&  /root/anaconda3/envs/tensorflow/bin/pip install scikit-learn \
 &&  /root/anaconda3/envs/tensorflow/bin/pip install pillow \
 &&  /root/anaconda3/envs/tensorflow/bin/pip install keras \
+&&  /root/anaconda3/envs/tensorflow/bin/pip install gensim \
 
 && rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 && rm /opt/DL/Tensorflow-101.tar.gz \
