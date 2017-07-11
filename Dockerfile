@@ -60,7 +60,7 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && apt-get update \
 && apt-get install gfortran \
 
-&& source activate tensorflow \
+&& source /root/anaconda3/bin/activate tensorflow \
 && /root/anaconda3/envs/tensorflow/bin/pip install numpy scipy \
 && /root/anaconda3/envs/tensorflow/bin/pip install scikit-learn \
 && /root/anaconda3/envs/tensorflow/bin/pip install pillow \
