@@ -61,10 +61,10 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 && apt-get install -y gfortran \
 && apt-get update \
 
-&& pip install numpy scipy \
-&& pip install scikit-learn \
-&& pip install pillow \
-&& pip install keras \
+&&  /root/anaconda3/envs/tensorflow/bin/pip install numpy scipy \
+&&  /root/anaconda3/envs/tensorflow/bin/pip install scikit-learn \
+&&  /root/anaconda3/envs/tensorflow/bin/pip install pillow \
+&&  /root/anaconda3/envs/tensorflow/bin/pip install keras \
 
 && rm /opt/DL/Tensorflow-Tutorials.tar.gz \
 && rm /opt/DL/Tensorflow-101.tar.gz \
