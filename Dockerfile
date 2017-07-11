@@ -64,6 +64,7 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 &&  /root/anaconda3/envs/tensorflow/bin/pip install numpy scipy \
 &&  /root/anaconda3/envs/tensorflow/bin/pip install scikit-learn \
 &&  /root/anaconda3/envs/tensorflow/bin/pip install pillow \
+&&  conda install h5py \
 &&  /root/anaconda3/envs/tensorflow/bin/pip install keras \
 &&  /root/anaconda3/envs/tensorflow/bin/pip install gensim \
 
